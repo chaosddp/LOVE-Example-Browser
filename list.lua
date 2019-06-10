@@ -2,6 +2,8 @@
 -- List object
 ----------------------
 
+require("utils")
+
 local List = {}
 
 function inside(mx, my, x, y, w, h)
@@ -183,10 +185,10 @@ function List:draw()
 		end
 
 		rx, ry, rw, rh = self:getItemRect(i)
-		love.graphics.setColor(colorset.bg)
+		love.graphics.setColor(color(colorset.bg))
 		love.graphics.rectangle("fill", rx, ry, rw, rh)
 
-		love.graphics.setColor(colorset.fg)
+		love.graphics.setColor(color(colorset.fg))
 		love.graphics.print(self.items[i].title, rx + 10, ry + 5) 
 
 	end
@@ -202,12 +204,12 @@ function List:draw()
 		end
 		
 		rx, ry, rw, rh = self:getBarRect()
-		love.graphics.setColor(colorset.bg)
+		love.graphics.setColor(color(colorset.bg))
 		love.graphics.rectangle("fill", rx, ry, rw, rh)
 	end
 
 	-- Border
-	love.graphics.setColor(self.bordercolor)
+	love.graphics.setColor(color(self.bordercolor))
 	love.graphics.rectangle("line", self.x + self.width, self.y, self.bar.width, self.height)
 	love.graphics.rectangle("line", self.x, self.y, self.width, self.height)
 

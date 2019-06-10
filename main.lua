@@ -9,6 +9,8 @@
 exf = {}
 
 local List = require("list")
+require("utils")
+
 function love.load()
 	exf.list = List:new(20, 40, 300, 450)
 	exf.smallfont = love.graphics.newFont(11)
@@ -70,9 +72,9 @@ function exf.update(dt)
 end
 
 function exf.draw()
-	love.graphics.setBackgroundColor(54, 172, 248)
+	love.graphics.setBackgroundColor(color(54, 172, 248))
 
-	love.graphics.setColor(255, 255, 255)
+	love.graphics.setColor(color(255, 255, 255))
 	love.graphics.setFont(exf.bigfont)
 	love.graphics.print("Example Browser", 20, 20)
 	love.graphics.print("Usage:", 20, 500)
@@ -128,7 +130,7 @@ function exf.intable(t, e)
 end
 
 function exf.run(file, title, ...)
-	if not love.filesystem.exists(file) then
+	if not file_exists(file) then
 		print("Could not load file .. " .. file)
 		return
 	end
@@ -170,8 +172,8 @@ end
 
 
 function exf.clear()
-	love.graphics.setBackgroundColor(0, 0, 0)
-	love.graphics.setColor(255, 255, 255)
+	love.graphics.setBackgroundColor(color(0, 0, 0))
+	love.graphics.setColor(color(255, 255, 255))
 	love.graphics.setLineWidth(1)
 	love.graphics.setLineStyle("smooth")
 	love.graphics.setBlendMode("alpha")
